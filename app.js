@@ -23,9 +23,11 @@ document.getElementById("searchBtn").addEventListener("click", function () {
         resultDiv.innerHTML = `
             <p><strong>Topildi:</strong> ${result[0].name} ${result[0].surname}</p>
             <p><strong>Login:</strong> <span id="login">${result[0].login}</span></p>
+            <p><strong>Parol:</strong> <span id="parol">123456789*</span></p>
             <br>
             <br>
             <button class="copy-btn" onclick="copyLogin()">Loginni nusxa olish</button>
+            <button class="copy-btn" onclick="copyParol()">Parolni nusxa olish</button>
         `;
     } else {
         resultDiv.innerHTML = "<p>Ma'lumot topilmadi!</p>";
@@ -37,7 +39,16 @@ function copyLogin() {
     const login = document.getElementById("login").textContent;
 
     navigator.clipboard.writeText(login).then(() => {
-        alert("Login nusxalandi: " + login);
+        
+    }).catch(err => {
+        console.error("Nusxa olishda xatolik: ", err);
+    });
+}
+function copyParol() {
+    const parol = document.getElementById("parol").textContent;
+
+    navigator.clipboard.writeText(parol).then(() => {
+        
     }).catch(err => {
         console.error("Nusxa olishda xatolik: ", err);
     });
